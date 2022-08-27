@@ -1,3 +1,11 @@
 # Cubane
----
-Just some random CPP files to brush up my CPP skills. Some examples will be from the book `A tour of C++`.
+
+A stack based programming language, in future planning to write in it self, for now using Python as a bootstrap.
+
+## Usage
+
+```console
+$ chmod +x cubane.py
+$ ./cubane.py
+```
+

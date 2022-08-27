@@ -35,7 +35,7 @@ def sub():
 def dump():
     return (OP_DUMP,)
 
-def simulation(program):
+def simulate(program):
     stack: List = []
     assert COUNT_OPS == 4, "Exhaustive handling of operations in simulation"
     for op in program:
@@ -55,7 +55,7 @@ def simulation(program):
         else:
             assert False, "Unknown operation in simulation"
 
-def compile(program):
+def compile(program, rum: bool):
     assert False, "Not implemented"
 
 
@@ -67,11 +67,29 @@ program = [
         push(70),
         push(1),
         sub(),
+        dump(),
+        push(737),
         dump()
         ]
 
-simulation(program)
+def usage():
+    print("Usage: ./cubane.py <mode> [subcommand]")
+    print("Modes:")
+    print("   sim - Run the simulation")
+    print("   asm - Compile to assembly")
+    print("   run - Compile to assembly and run")
 
+if __name__ == '__main__':
+    if len(sys.argv) < 2:
+        print("ERROR: no mode specified")
+        usage()
+        sys.exit(1)
+    elif sys.argv[1] == "sim":
+        simulate(program)
+    elif sys.argv[1] == "asm":
+        compile(program, False)
+    elif sys.argv[1] == "run":
+        compile(program, True)
 
 
 
